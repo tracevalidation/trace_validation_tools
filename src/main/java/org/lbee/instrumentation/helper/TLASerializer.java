@@ -7,6 +7,6 @@ import com.google.gson.JsonElement;
  */
 public interface TLASerializer {
 
-    JsonElement tlaSerialize();
+    JsonElement tlaSerialize() throws IllegalAccessException;
 
 }

@@ -1,13 +1,13 @@
 package org.lbee.instrumentation.helper;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
-
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 
 /**
  * A helper class for serializing objects to NDJSON. The class provides methods
@@ -18,7 +18,7 @@ public class NDJsonSerializer {
     /**
      * Serializes the given values to a JSON array.
      */
-    static JsonElement serializeValues(Object... values) throws IllegalAccessException {
+    public static JsonElement serializeValues(Object... values) throws IllegalAccessException {
         final JsonArray jsonArgs = new JsonArray();
         for (Object value : values) {
             jsonArgs.add(serializeValue(value));
@@ -29,7 +29,7 @@ public class NDJsonSerializer {
     /**
      * Serializes the given value to a JSON element.
      */
-    static JsonElement serializeValue(Object propertyValue) throws IllegalAccessException {
+    public static JsonElement serializeValue(Object propertyValue) throws IllegalAccessException {
         final JsonElement jsonValue;
         if (propertyValue == null)
             return null;
