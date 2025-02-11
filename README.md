@@ -70,7 +70,18 @@ If you use `maven` to build your project then, depending on the installation met
 ```
 The version number depends on the version you intend to use. If installed from sources, the version is specified in the [pom.xml](pom.xml) file and a corresponding directory `org/lbee/instrumentation` is installed in the `.m2` `repository`.
 
-2. If the jar is coppied locally to location `${jar.repository}`:
+The library can be also installed locally by geting the `jar` file for the corresponding [Releases](releases) and install manually using the command:
+```zsh
+mvn install:install-file \
+    -Dfile=lib/instrumentation-1.3.jar \
+    -DgroupId=org.lbee\
+    -DartifactId=instrumentation \
+    -Dversion=1.3 \
+    -Dpackaging=jar
+```
+if we consider that `lib` is the directory where the `jar` was copied.
+
+2. If the jar is not installed system wise but just copied locally to location `${jar.repository}` than the dependency should be adjusted to reflect this:
 ```xml 
 <dependencies>
         <dependency>
@@ -80,14 +91,9 @@ The version number depends on the version you intend to use. If installed from s
             <scope>system</scope>
             <systemPath>${jar.repository}/instrumentation-1.3.jar</systemPath>
         </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.10.1</version>
-        </dependency>
 </dependencies>
 ```
-The jar should be also specified in the classpath when executing the program.
+In this case, `instrumentation-1.3.jar` and `gson-2.10.1.jar` (or the correspondinig alternative releases) should be also specified in the classpath when executing the program.
 
 # Scripts
 
