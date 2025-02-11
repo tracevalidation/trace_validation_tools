@@ -52,7 +52,7 @@ projects:
 1. Get the source, compile, package and install it:
  - Clone the repository: `git clone https://github.com/lbinria/trace_validation_tools.git`
  - Package and install: `mvn install`
-2. Get the jar directly from the assets in the [Releases](releases) section.
+2. Get the jar directly from the assets in the [Releases](https://github.com/tracevalidation/trace_validation_tools/releases) section.
 
 # Use the library 
 
