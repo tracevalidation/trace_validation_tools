@@ -116,6 +116,15 @@ public final class VirtualField {
      * @param op    the operation
      * @param args  the arguments of the operation
      */
+    public void apply(String op, List<Object> args) {
+        tracer.notifyChange(this.getVar(), this.getPath(), op, args);
+    }
+
+    /**
+     * Notifies the tracer of a change to this field.
+     * @param op    the operation
+     * @param args  the arguments of the operation
+     */
     public void apply(String op, Object... args) {
         tracer.notifyChange(this.getVar(), this.getPath(), op, List.of(args));
     }
