@@ -1,13 +1,5 @@
 package org.lbee.instrumentation.trace;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-
-import org.lbee.instrumentation.clock.ClockFactory;
-import org.lbee.instrumentation.clock.ClockException;
-import org.lbee.instrumentation.clock.InstrumentationClock;
-import org.lbee.instrumentation.helper.NDJsonSerializer;
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,6 +7,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
+
+import org.lbee.instrumentation.clock.ClockException;
+import org.lbee.instrumentation.clock.ClockFactory;
+import org.lbee.instrumentation.clock.InstrumentationClock;
+import org.lbee.instrumentation.helper.NDJsonSerializer;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 public class TLATracer {
     // unique id
@@ -88,6 +88,10 @@ public class TLATracer {
         }
         // add the action to the list of actions
         updates.get(variable).add(new TraceItem(operator, path, args));
+    }
+
+    public void notifyChange(String variable, List<Object> path, String operator, Object... args) {
+        this.notifyChange(variable, path, operator, List.of(args));
     }
 
     /**
