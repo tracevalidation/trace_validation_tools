@@ -228,6 +228,22 @@ public class TLATracer {
      *                   corresponds to an action name in the TLA+ specification).
      * @param args       Arguments of the event that is committed (generally
      *                   correspond to action arguments in the TLA+ specification).
+     * @param clockValue Clock value at the time the commit is requested.
+     * @return the clock value used to log the event.
+     * @throws IOException Thrown when unable to write event in trace file.
+     */
+    public long log(long clockValue, String eventName, Object... args) throws IOException {
+        return this.log(eventName, args, clockValue, "");
+    }
+
+    /**
+     * Commit all variable changes since the previous log or since the creation of
+     * the tracer.
+     * 
+     * @param eventName  Name of the event corresponding to the commit (generally
+     *                   corresponds to an action name in the TLA+ specification).
+     * @param args       Arguments of the event that is committed (generally
+     *                   correspond to action arguments in the TLA+ specification).
      * @return the clock value used to log the event.
      * @throws IOException Thrown when unable to write event in trace file.
      */

@@ -137,6 +137,13 @@ public final class VirtualField {
     }
 
     /**
+     * Notifies explicitly the tracer that this field is not modified.
+     */
+    public void unchanged() {
+        apply("Unchanged");
+    }
+
+    /**
      * Notifies the tracer that an update is applied to this field.
      * @param val new value of the field
      */
